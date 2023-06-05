@@ -1,0 +1,14 @@
+version: "3"
+vars:
+  TAG: latest
+
+tasks:
+  build:
+    cmds:
+      - |
+        docker build -t docker-cdk-alpine:{{.TAG}} .
+
+  test:
+    cmds:
+      - |
+        docker run --rm -it docker-cdk-alpine:{{.TAG}} {{.CLI_ARGS}}
